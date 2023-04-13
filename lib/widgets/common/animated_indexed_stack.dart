@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 const double INIT_POSITION = 1.0;

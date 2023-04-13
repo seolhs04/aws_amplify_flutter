@@ -1,10 +1,11 @@
+import 'package:aws_amplify_flutter/models/route_model.dart';
+import 'package:aws_amplify_flutter/widgets/common/animated_indexed_stack.dart';
 import 'package:flutter/material.dart';
-import 'package:aws_amplify_flutter/screen/home_screen.dart';
-import 'package:aws_amplify_flutter/screen/maps_screen.dart';
-import 'package:aws_amplify_flutter/screen/settings_screen.dart';
-import 'package:aws_amplify_flutter/widget/AnimatedIndexedStack.dart';
 
-import '../model/route_model.dart';
+import 'home/main.dart';
+import 'maps/main.dart';
+import 'settings/main.dart';
+import 'todos/main.dart';
 
 final List<NavigationRoute> _routes = [
   NavigationRoute(
@@ -16,6 +17,11 @@ final List<NavigationRoute> _routes = [
     name: 'Maps',
     icon: const Icon(Icons.map_outlined),
     page: const MapsScreen(),
+  ),
+  NavigationRoute(
+    name: 'Todos',
+    icon: const Icon(Icons.list_alt),
+    page: const TodosScreen(),
   ),
   NavigationRoute(
     name: 'Settings',
@@ -58,7 +64,7 @@ class _MainRouteState extends State<MainRoute> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My App'),
+        title: const Text('App'),
       ),
       body: AnimatedIndexedStack(
         index: _currentIndex,
@@ -66,6 +72,7 @@ class _MainRouteState extends State<MainRoute> {
         children: _routes.map((route) => route.page).toList(),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         currentIndex: _currentIndex,
         onTap: _onPageChanged,
         items: _routes.map((route) {
