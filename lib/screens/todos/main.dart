@@ -1,10 +1,6 @@
 import 'dart:async';
 
-import 'package:amplify_api/amplify_api.dart';
-import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
-import 'package:amplify_datastore/amplify_datastore.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
-import 'package:aws_amplify_flutter/amplifyconfiguration.dart';
 import 'package:aws_amplify_flutter/models/ModelProvider.dart';
 import 'package:aws_amplify_flutter/widgets/todo/todos_list.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +21,7 @@ class _TodosScreenState extends State<TodosScreen> {
 
   @override
   void initState() {
-    _initializeApp();
+    _subscriptTodo();
     super.initState();
   }
 
@@ -35,9 +31,7 @@ class _TodosScreenState extends State<TodosScreen> {
     _subscription.cancel();
   }
 
-  Future<void> _initializeApp() async {
-    await _configureAmplify();
-
+  Future<void> _subscriptTodo() async {
     _subscription = Amplify.DataStore.observeQuery(Todo.classType)
         .listen((QuerySnapshot<Todo> snapshot) {
       setState(() {
@@ -45,24 +39,6 @@ class _TodosScreenState extends State<TodosScreen> {
         _todos = snapshot.items;
       });
     });
-  }
-
-  Future<void> _configureAmplify() async {
-    try {
-      // amplify plugins
-      final dataStorePlugin =
-          AmplifyDataStore(modelProvider: ModelProvider.instance);
-      final apiPlugin = AmplifyAPI();
-      final authPlugin = AmplifyAuthCognito();
-
-      // add Amplify plugins
-      await Amplify.addPlugins([dataStorePlugin, apiPlugin, authPlugin]);
-
-      // note that Amplify cannot be configured more than once!
-      await Amplify.configure(amplifyconfig);
-    } catch (e) {
-      safePrint('An error occurred while configuring Amplify: $e');
-    }
   }
 
   @override
