@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "hakdong_place" "\0"
+            VALUE "FileDescription", "aws_amplify_flutter" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "hakdong_place" "\0"
+            VALUE "InternalName", "aws_amplify_flutter" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "hakdong_place.exe" "\0"
-            VALUE "ProductName", "hakdong_place" "\0"
+            VALUE "OriginalFilename", "aws_amplify_flutter.exe" "\0"
+            VALUE "ProductName", "aws_amplify_flutter" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

@@ -1,4 +1,4 @@
-# hakdong_place
+# aws_amplify_flutter
 
 A new Flutter project.
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hakdong_place/screen/home_screen.dart';
-import 'package:hakdong_place/screen/maps_screen.dart';
-import 'package:hakdong_place/screen/settings_screen.dart';
-import 'package:hakdong_place/widget/AnimatedIndexedStack.dart';
+import 'package:aws_amplify_flutter/screen/home_screen.dart';
+import 'package:aws_amplify_flutter/screen/maps_screen.dart';
+import 'package:aws_amplify_flutter/screen/settings_screen.dart';
+import 'package:aws_amplify_flutter/widget/AnimatedIndexedStack.dart';
 
 import '../model/route_model.dart';
 

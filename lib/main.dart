@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hakdong_place/screen/main_route.dart';
+import 'package:aws_amplify_flutter/screen/main_route.dart';
 
 void main() {
   runApp(const MyApp());
