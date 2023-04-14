@@ -1,4 +1,4 @@
-import 'package:aws_amplify_flutter/screens/main_route.dart';
+import 'package:aws_amplify_flutter/screens/login/main.dart';
 import 'package:aws_amplify_flutter/utils/amplify_service.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +22,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> _initializeApp() async {
-    await AmplifyService().config();
+    await AmplifyService.config();
 
     setState(() {
       _isLoading = false;
@@ -35,7 +35,7 @@ class _MyAppState extends State<MyApp> {
       title: 'Flutter Demo',
       home: _isLoading
           ? const Center(child: CircularProgressIndicator())
-          : const MainRoute(),
+          : const LoginScreen(),
     );
   }
 }
