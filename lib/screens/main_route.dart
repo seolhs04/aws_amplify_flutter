@@ -1,6 +1,8 @@
 import 'package:aws_amplify_flutter/models/route_model.dart';
+import 'package:aws_amplify_flutter/stores/counter_cubit.dart';
 import 'package:aws_amplify_flutter/widgets/common/animated_indexed_stack.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'home/main.dart';
 import 'maps/main.dart';
@@ -62,22 +64,25 @@ class _MainRouteState extends State<MainRoute> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('App'),
-      ),
-      body: AnimatedIndexedStack(
-        index: _currentIndex,
-        duration: const Duration(milliseconds: 200),
-        children: _routes.map((route) => route.page).toList(),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        currentIndex: _currentIndex,
-        onTap: _onPageChanged,
-        items: _routes.map((route) {
-          return BottomNavigationBarItem(icon: route.icon, label: route.name);
-        }).toList(),
+    return BlocProvider(
+      create: (_) => CounterCubit(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('App'),
+        ),
+        body: AnimatedIndexedStack(
+          index: _currentIndex,
+          duration: const Duration(milliseconds: 200),
+          children: _routes.map((route) => route.page).toList(),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          currentIndex: _currentIndex,
+          onTap: _onPageChanged,
+          items: _routes.map((route) {
+            return BottomNavigationBarItem(icon: route.icon, label: route.name);
+          }).toList(),
+        ),
       ),
     );
   }

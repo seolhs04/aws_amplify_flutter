@@ -26,6 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Future<void> _pressLoginButton() async {
     if (!_formKey.currentState!.validate()) return;
     try {
+      await Amplify.Auth.signOut();
       final result = await Amplify.Auth.signIn(
         username: emailController.text,
         password: passwordController.text,
